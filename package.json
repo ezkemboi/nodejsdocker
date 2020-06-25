@@ -7,12 +7,14 @@
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
     "build": "tsc",
     "prestart": "npm run build",
-    "start": "node .",
+    "start": "node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/amqplib": "^0.5.13",
+    "amqplib": "^0.5.6",
     "express": "^4.17.1"
   },
   "devDependencies": {
