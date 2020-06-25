@@ -1,15 +1,27 @@
 import express from "express";
-import RabitMq from "./services/rebitMq";
-// Constants
-const PORT = 5000;
-const HOST = "0.0.0.0";
+import RabitMq from "./services/rabitMq";
+import firebase from "./services/firebase";
+import * as dotenv from "dotenv";
 
-// App
+dotenv.config();
+const database = firebase.database();
+const writeUserData = (id: any) => {
+  database.ref("/" + id).set({
+    username: "Hezzie",
+    email: "hezzie@gmail.com",
+  });
+};
+const PORT = process.env.port || 5000;
+
 const app = express();
 app.get("/", (req, res) => {
-  RabitMq("codingtest", "send", (value: any) => {
-    res.send(value);
+  writeUserData(1);
+  RabitMq("codingtest", "receive", (value: any) => {
+    console.log("Value", value);
   });
+  res.send("value");
 });
 
-app.listen(PORT, HOST);
+app.listen(PORT, () => {
+  console.log("App listening to port" + PORT);
+});

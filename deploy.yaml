@@ -10,7 +10,6 @@ spec:
       - app: nodejs
   spec:
     containers:
-      - name: nodongo
       - image: nodejddocker
       - ports:
           - containerPort: 3000
