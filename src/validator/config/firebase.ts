@@ -14,6 +14,7 @@ const {
   MEASUREMENT_ID,
 } = process.env;
 
+//Firebase config variables
 const firebaseConfig = {
   apiKey: API_KEY,
   authDomain: AUTHDOMAIN,
@@ -24,9 +25,12 @@ const firebaseConfig = {
   appId: APP_ID,
   measurementId: MEASUREMENT_ID,
 };
-// firebase.analytics();
+
+// initialize app
 const Firebase = firebase.initializeApp(firebaseConfig);
 export default Firebase;
+
+// Write data to realtime database
 export const write = (id: any, data: any) => {
   Firebase.database()
     .ref("/" + id)
