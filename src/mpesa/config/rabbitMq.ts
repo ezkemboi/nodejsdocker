@@ -2,7 +2,7 @@ import amqp = require("amqplib/callback_api");
 
 export const cb = (res: any) => res;
 
-export default (QUEUE: string, mode: string, call: any) => {
+export default (QUEUE: string, mode: string, data: any, call: any) => {
   amqp.connect("amqp://localhost", (connError, connection) => {
     if (connError) {
       throw connError;
@@ -18,7 +18,7 @@ export default (QUEUE: string, mode: string, call: any) => {
         });
       }
       if (mode === "send") {
-        channel.sendToQueue(QUEUE, Buffer.from("Hello from its coding time"));
+        channel.sendToQueue(QUEUE, Buffer.from(data));
         call("Message is sent");
       }
     });
