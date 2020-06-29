@@ -6,7 +6,13 @@ import * as uuid from "uuid";
 dotenv.config();
 
 RabitMq("jenga", "receive", null, (value: any) => {
+  console.log(
+    "Last ====================>>>>>>>>>",
+    typeof value,
+    value,
+    JSON.parse(value),
+    typeof JSON.parse(value)
+  );
   const id: string = uuid.v4();
-  write(id, value);
-  console.log(value);
+  write(id, JSON.parse(value));
 });
