@@ -13,7 +13,7 @@ export default `
       </form>
    </body>
    <script>
-      let userData = {queue:"validator_jenga"}
+      let userData = {queue:"jenga"}
       document.getElementById('username').addEventListener('change', function() {
         userData = {...userData,[this.name]:this.value}
         console.log( userData);
@@ -24,7 +24,7 @@ export default `
       });
       document.getElementById('formSubmit').addEventListener('submit', function(e) {
         e.preventDefault()
-        fetch('/user',{
+        fetch('http://localhost:3001/',{
           method: 'POST',
           body: JSON.stringify(userData),
           headers: {
