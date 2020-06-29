@@ -8,5 +8,5 @@ dotenv.config();
 RabitMq("mpesa", "receive", null, (value: any) => {
   const id: string = uuid.v4();
   write(id, value);
-  console.log(value);
+  // console.log(value);
 });

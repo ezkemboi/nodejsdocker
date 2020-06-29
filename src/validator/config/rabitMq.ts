@@ -19,6 +19,7 @@ export default (QUEUE: string, mode: string, data: any, call: any) => {
         channel.consume(QUEUE, (msg) => {
           call(msg.content.toString());
         });
+
       }
       if (mode === "send") {
         // send to queue

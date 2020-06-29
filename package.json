@@ -8,7 +8,7 @@
     "build": "tsc",
     "prestart": "npm run build",
     "start": "node dist/index.js",
-    "dev": "concurrently \"npm run build\" \"npm run startClient\" \"npm run startValidator\" \"npm run startMpesa\" \"npm run startJenga\"",
+    "dev": "npm run build && concurrently  \"npm run startClient\" \"npm run startValidator\" \"npm run startMpesa\" \"npm run startJenga\"",
     "startJenga": "node dist/jenga/index.js",
     "startClient": " node dist/client/index.js",
     "startValidator": "node dist/validator/index.js",
