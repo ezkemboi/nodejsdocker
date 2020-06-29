@@ -14,7 +14,7 @@ const {
   MEASUREMENT_ID,
 } = process.env;
 
-//Firebase config variables
+// Firebase config variables
 const firebaseConfig = {
   apiKey: API_KEY,
   authDomain: AUTHDOMAIN,

@@ -13,7 +13,6 @@ app.use(cors());
 
 app.post("/", (req, res) => {
   console.log(req.body);
-
   RabitMq(req.body.queue, "send", JSON.stringify(req.body), (value: any) => {
     console.log(value);
   });
